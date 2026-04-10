@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Testing Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>SQLi <span class="highlight">Lab</span></h1>
+            <p>Practice sqlmap against vulnerable and hardened endpoints.</p>
+            <div class="mode-toggle">
+                <button id="btn-vulnerable" class="active">Vulnerable Mode</button>
+                <button id="btn-secure">Secure Mode</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <section class="card login-section">
+                    <h2>Login Endpoint</h2>
+                    <p class="endpoint-info">POST <code id="login-endpoint-url">/api/vulnerable/login</code></p>
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="admin">
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="primary-btn">Login</button>
+                    </form>
+                    <div id="login-result" class="result-box hidden"></div>
+                </section>
+
+                <section class="card search-section">
+                    <h2>Product Search Endpoint</h2>
+                    <p class="endpoint-info">GET <code id="search-endpoint-url">/api/vulnerable/products</code></p>
+                    <form id="search-form">
+                        <div class="input-group">
+                            <label for="search">Search Product</label>
+                            <input type="text" id="search" name="search" placeholder="Laptop">
+                        </div>
+                        <button type="submit" class="primary-btn">Search</button>
+                    </form>
+                    <div id="search-result" class="result-box hidden"></div>
+                </section>
+            </div>
+
+            <section class="card logger-section">
+                <h2>Server Response Log</h2>
+                <div class="terminal" id="log-terminal">
+                    <div class="log-entry system">System initialized. Awaiting requests...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
